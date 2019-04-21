@@ -1,0 +1,4 @@
+[build]
+  base = "front/beagile"
+  command = "npm run build:prod"
+  publish = "front/begile/dist/beagile"
