@@ -54,6 +54,7 @@ group :development do
   gem 'awesome_print'
 
   gem 'rubocop'
+  gem 'rubocop-performance'
 end
 
 
