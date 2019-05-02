@@ -1,0 +1,69 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  TargetRailsVersion: 5.2
+  DisplayCopNames: true
+  Exclude:
+    - 'db/schema.rb'
+AsciiComments:
+  Enabled: false
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  IgnoredPatterns: ['^class.*']
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+    attributes:
+      - attribute
+      - attr_reader
+      - attr_writer
+      - attr_accessor
+    associations:
+      - has_one
+      - has_many
+      - belongs_to
+      - has_and_belongs_to_many
+    validations:
+      - validate
+      - validates_presence_of
+      - validates_uniqueness_of
+    hooks:
+      - after_save
+      - after_create
+      - after_initialize
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - attributes
+      - associations
+      - validations
+      - hooks
+      - public_class_methods
+      - initializer
+      - public_methods
+      - protected_methods
+      - private_methods
+Naming/UncommunicativeMethodParamName:
+  MinNameLength: 2
+  AllowedNames:
+    - e
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/apis/**/*'
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/NumericLiterals:
+  MinDigits: 7
+Rails:
+  Enabled: true
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+
+# inherit_from: .rubocop_todo.yml
