@@ -16,7 +16,9 @@ Documentation:
   Enabled: false
 Metrics/LineLength:
   Max: 100
-  IgnoredPatterns: ['^class.*']
+  IgnoredPatterns:
+    - '^class.*'
+    - '(\A|\s)#'
 Layout/ClassStructure:
   Enabled: true
   Categories:
