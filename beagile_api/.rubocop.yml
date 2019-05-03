@@ -8,13 +8,17 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - 'db/schema.rb'
+    - 'vendor/**/*'
+    - 'bin/*'
 AsciiComments:
   Enabled: false
 Documentation:
   Enabled: false
 Metrics/LineLength:
   Max: 100
-  IgnoredPatterns: ['^class.*']
+  IgnoredPatterns:
+    - '^class.*'
+    - '(\A|\s)#'
 Layout/ClassStructure:
   Enabled: true
   Categories:
