@@ -1,0 +1,56 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/ruby:2.6.2
+        environment:
+          RAILS_ENV: test
+
+commands:
+  restore_gem:
+    steps:
+      - restore_cache:
+          name: Restore gem dependencies
+          key: v1-gem-{{ checksum "beagile_api/Gemfile.lock" }}
+  save_gem:
+    steps:
+      - save_cache:
+          name: Cache gem dependencies
+          key: v1-gem-{{ checksum "beagile_api/Gemfile.lock" }}
+          paths:
+            - beagile_api/vendor/bundle
+jobs:
+  setup:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_gem
+      - run:
+          name: Install gem dependencies
+          working_directory: beagile_api
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - save_gem
+  rubocop:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_gem
+      - run:
+          name: Bundle check
+          working_directory: beagile_api
+          command: bundle check --path=vendor/bundle
+      - run:
+          name: Rubocop
+          working_directory: beagile_api
+          command: bundle exec rubocop
+
+workflows:
+  setup_and_rubocop:
+    jobs:
+      - setup
+      - rubocop:
+          requires: [setup]
