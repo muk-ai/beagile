@@ -9,6 +9,7 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'bin/*'
 AsciiComments:
   Enabled: false
 Documentation:
