@@ -7,7 +7,7 @@ module BeagileAPI
         info: {
           title: 'Beagile API',
           description: 'desciption'
-        },
+        }
       )
     end
   end

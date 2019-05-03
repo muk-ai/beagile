@@ -45,6 +45,16 @@ group :development do
   gem 'grape-swagger'
   gem 'grape-swagger-rails'
   gem 'grape-swagger-active_model_serializers'
+
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+
+  gem 'awesome_print'
+
+  gem 'rubocop'
+  gem 'rubocop-performance'
 end
 
 
