@@ -19,7 +19,7 @@ module ErrorHandleable
       error!(response, 422)
     end
 
-    rescue_from ActiveRecord::StatementInvalid do |e|
+    rescue_from ActiveRecord::StatementInvalid do |_e|
       response = {
         errors: [{
           detail: 'Server Error',
@@ -29,7 +29,7 @@ module ErrorHandleable
       error!(response, 500)
     end
 
-    rescue_from StandardError do |e|
+    rescue_from StandardError do |_e|
       response = {
         errors: [{
           detail: 'Server Error',
