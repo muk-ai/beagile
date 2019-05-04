@@ -1,6 +1,8 @@
 module BeagileAPI
   module V1
     class Root < Grape::API
+      helpers Authenticable
+
       version 'v1'
       format :json
 
