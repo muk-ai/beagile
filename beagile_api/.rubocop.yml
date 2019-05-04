@@ -19,6 +19,8 @@ Metrics/LineLength:
   IgnoredPatterns:
     - '^class.*'
     - '(\A|\s)#'
+GuardClause:
+  MinBodyLength: 4
 Layout/ClassStructure:
   Enabled: true
   Categories:
