@@ -1,0 +1,103 @@
+@startuml ER diagram
+
+' uml options
+hide empty members
+
+' entities
+entity users {
+  +id: uuid
+}
+
+entity user_details {
+  user_id
+  --
+  email
+  name
+}
+
+entity projects {
+  +id: uuid
+  organization_id
+}
+
+entity project_memberships {
+  user_id
+  project_id
+}
+
+entity project_role {
+}
+
+entity organizations {
+  +id: uuid
+}
+
+entity organization_memberships {
+}
+
+entity organization_role {
+}
+
+entity sprints {
+  project_id
+}
+
+entity billing_plans {
+}
+enum plan {
+  free
+  up to 25
+  up to 50
+  over 50
+}
+billing_plans <. plan
+
+entity product_backlog_lists {
+  project_id
+}
+
+entity sprint_backlog_lists {
+  sprint_id
+}
+
+entity sprint_doing_lists {
+  sprint_id
+}
+
+entity sprint_done_lists {
+  sprint_id
+}
+
+entity tasks {
+  created_by
+}
+
+entity task_relationships {
+  list_id
+  list_type: Backlog?
+  order
+}
+
+' relationships
+users -down- user_details
+users -{ project_memberships
+project_memberships }- projects
+project_memberships -down- project_role
+users -up-{ organization_memberships
+organization_memberships }-left- organizations
+organization_memberships -down- organization_role
+organizations -down-{ projects
+organizations -{ "1 or many" billing_plans
+projects -right- product_backlog_lists
+product_backlog_lists -{ task_relationships
+projects -down-{ sprints
+sprints -down- sprint_backlog_lists
+sprints -down- sprint_doing_lists
+sprints -down- sprint_done_lists
+sprint_backlog_lists -down-{ task_relationships
+sprint_doing_lists -down-{ task_relationships
+sprint_done_lists -down-{ task_relationships
+task_relationships }-down- tasks
+tasks - users
+
+@enduml
