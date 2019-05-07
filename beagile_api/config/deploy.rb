@@ -3,6 +3,7 @@ lock '~> 3.11.0'
 
 set :application, 'beagile_api'
 set :repo_url, 'git@github.com:muk-ai/beagile.git'
+set :repo_tree, 'beagile_api'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
