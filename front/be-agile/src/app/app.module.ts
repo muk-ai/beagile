@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -12,7 +11,6 @@ import { AppComponent } from "./app.component";
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBE6-TKF0vPwC7B0OxXKrtVvNJZzf22nsQ",
