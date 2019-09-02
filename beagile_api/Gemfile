@@ -71,6 +71,8 @@ group :development do
   # net-ssh requires the following gems
   gem 'bcrypt_pbkdf', require: false
   gem 'ed25519', require: false
+
+  gem 'solargraph'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
