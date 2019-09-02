@@ -1,12 +1,7 @@
 {
 	"folders": [
 		{
-			"name": "api",
-			"path": "./beagile_api"
-		},
-		{
-			"name": "front",
-			"path": "./front/be-agile"
+			"path": "."
 		}
 	],
 	"settings": {}
