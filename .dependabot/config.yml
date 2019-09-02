@@ -1,0 +1,41 @@
+# see https://dependabot.com/docs/config-file/
+version: 1
+update_configs:
+  - package_manager: "ruby:bundler"
+    directory: "/beagile_api"
+    update_schedule: "daily"
+    automerged_updates:
+      - match:
+          dependency_name: "solargraph"
+          update_type: "semver:minor"
+  - package_manager: "javascript"
+    directory: "/front/be-agile"
+    update_schedule: "daily"
+    ignored_updates:
+      - match:
+          dependency_name: "@angular/animations"
+      - match:
+          dependency_name: "@angular/common"
+      - match:
+          dependency_name: "@angular/compiler"
+      - match:
+          dependency_name: "@angular/core"
+      - match:
+          dependency_name: "@angular/cli"
+      - match:
+          dependency_name: "@angular/compiler-cli"
+      - match:
+          dependency_name: "@angular/forms"
+      - match:
+          dependency_name: "@angular/language-service"
+      - match:
+          dependency_name: "@angular/platform-browser"
+      - match:
+          dependency_name: "@angular/platform-browser-dynamic"
+      - match:
+          dependency_name: "@angular/router"
+      - match:
+          dependency_name: "@angular-devkit/build-angular"
+      - match:
+          dependency_name: "@types/node"
+          version_requirement: ">=11.x"
