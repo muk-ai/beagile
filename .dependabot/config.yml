@@ -8,6 +8,9 @@ update_configs:
       - match:
           dependency_name: "solargraph"
           update_type: "semver:minor"
+      - match:
+          dependency_name: "pry*"
+          update_type: "semver:minor"
   - package_manager: "javascript"
     directory: "/front/be-agile"
     update_schedule: "daily"
