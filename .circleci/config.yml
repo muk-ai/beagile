@@ -7,6 +7,10 @@ executors:
       - image: circleci/ruby:2.6.3
         environment:
           RAILS_ENV: test
+  node:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:12.9.1-buster
 
 commands:
   restore_gem:
@@ -21,6 +25,19 @@ commands:
           key: v1-gem-{{ checksum "beagile_api/Gemfile.lock" }}
           paths:
             - beagile_api/vendor/bundle
+  restore_node_modules:
+    steps:
+      - restore_cache:
+          name: Restore node modules
+          key: v1-node_modules-{{ checksum "front/be-agile/package-lock.json" }}
+  save_node_modules:
+    steps:
+      - save_cache:
+          name: Cache node modules
+          key: v1-node_modules-{{ checksum "front/be-agile/package-lock.json" }}
+          paths:
+            - front/be-agile/node_modules
+
 jobs:
   setup:
     executor:
@@ -33,6 +50,17 @@ jobs:
           working_directory: beagile_api
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_gem
+  setup_node:
+    executor:
+      name: node
+    steps:
+      - checkout
+      - restore_node_modules
+      - run:
+          name: Install node modules
+          working_directory: front/be-agile
+          command: npm install
+      - save_node_modules
   rubocop:
     executor:
       name: default
@@ -47,6 +75,16 @@ jobs:
           name: Rubocop
           working_directory: beagile_api
           command: bundle exec rubocop
+  production_build:
+    executor:
+      name: node
+    steps:
+      - checkout
+      - restore_node_modules
+      - run:
+          name: production build
+          working_directory: front/be-agile
+          command: npm run build:prod -- --progress=false
 
 workflows:
   setup_and_rubocop:
@@ -54,3 +92,8 @@ workflows:
       - setup
       - rubocop:
           requires: [setup]
+  setup_node_and_production_build:
+    jobs:
+      - setup_node
+      - production_build:
+          requires: [setup_node]
