@@ -43,4 +43,4 @@ update_configs:
           dependency_name: "@angular-devkit/build-angular"
       - match:
           dependency_name: "@types/node"
-          version_requirement: ">=11.x"
+          version_requirement: ">=13.x"
