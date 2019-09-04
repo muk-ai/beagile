@@ -84,7 +84,7 @@ jobs:
       - run:
           name: production build
           working_directory: front/be-agile
-          command: npm run build:prod
+          command: npm run build:prod -- --progress=false
 
 workflows:
   setup_and_rubocop:
