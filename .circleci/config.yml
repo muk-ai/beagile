@@ -26,6 +26,7 @@ commands:
           paths:
             - beagile_api/vendor/bundle
   restore_node_modules:
+    steps:
       - restore_cache:
           name: Restore node modules
           key: v1-node_modules-{{ checksum "front/be-agile/package-lock.json" }}
