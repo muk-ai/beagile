@@ -4,7 +4,6 @@ update_configs:
   - package_manager: "ruby:bundler"
     directory: "/beagile_api"
     update_schedule: "daily"
-    target_branch: update_dependencies
     automerged_updates:
       - match:
           dependency_name: "solargraph"
@@ -15,7 +14,6 @@ update_configs:
   - package_manager: "javascript"
     directory: "/front/be-agile"
     update_schedule: "daily"
-    target_branch: update_dependencies
     ignored_updates:
       - match:
           dependency_name: "@angular/animations"
