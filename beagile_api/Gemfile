@@ -61,6 +61,7 @@ group :development do
 
   gem 'rubocop'
   gem 'rubocop-performance'
+  gem 'rubocop-rails'
 
   # deploy
   gem 'capistrano', require: false
