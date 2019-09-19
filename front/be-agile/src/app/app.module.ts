@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { SignInModule } from "./commons/sign-in/sign-in.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { AppComponent } from "./app.component";
       storageBucket: "beagile.appspot.com",
       messagingSenderId: "256420537000"
     }),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SignInModule
   ],
   providers: [],
   bootstrap: [AppComponent]

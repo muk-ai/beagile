@@ -3,10 +3,6 @@
   <button (click)="signOut()">Logout</button>
 </div>
 <ng-template #showLogin>
-  <a class="pointer" (click)="signIn()">
-    <img src="/assets/images/btn_google_signin_light_normal_web.png"
-        srcset="/assets/images/btn_google_signin_light_normal_web.png 1x,
-                /assets/images/btn_google_signin_light_normal_web@2x.png 2x">
-  </a>
+  <ba-sign-in-with-google-button></ba-sign-in-with-google-button>
 </ng-template>
 <router-outlet></router-outlet>
